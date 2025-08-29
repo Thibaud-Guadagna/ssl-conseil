@@ -1,0 +1,77 @@
+<section class="bg-[#23477D] font-montserrat">
+  <nav class="relative flex flex-col md:flex-row items-center justify-between">
+    <!-- Top row: Logo + Burger -->
+    <div
+      class="flex w-full flex-row-reverse lg:flex-row md:flex-row justify-between items-center"
+    >
+      <img
+        src="/sslconseillogofondbleu.jpg"
+        alt="SSL CONSEIL Logo"
+        class="w-24 h-18 mx-6"
+      />
+      <app-burger-button-component
+        [isOpen]="isOpen"
+        [toggle]="toggleMenu"
+        class="z-50"
+      />
+    </div>
+
+    <!-- Mobile menu -->
+
+    <ul
+      class="fixed top-0 left-0 h-full w-2/3 bg-[#23477D]/95 text-white flex flex-col gap-6 px-6 pt-24 md:hidden transform transition-transform duration-300 ease-in-out z-10 text-lg"
+      [class.translate-x-0]="isOpen()"
+      [class.-translate-x-full]="!isOpen()"
+    >
+      <li>Nos Prestations</li>
+      <li>Nos Offres</li>
+      <li>Nos Services</li>
+      <li>Nos Partenaires</li>
+      <li>Nous Contacter</li>
+    </ul>
+
+    <!-- Desktop menu -->
+    <ul class="hidden md:flex gap-6 text-white mt-4 md:mt-0 ml-auto md:mr-4 lg:text-lg">
+      <li class="relative group cursor-pointer whitespace-nowrap">
+        <span class="transition-colors duration-300 group-hover:text-[#ff8f3a]"
+          >Nos Prestations</span
+        >
+        <span
+          class="absolute left-0 bottom-0 h-[2px] w-0 bg-[#ff8f3a] transition-all duration-300 group-hover:w-full"
+        ></span>
+      </li>
+      <li class="relative group cursor-pointer whitespace-nowrap">
+        <span class="transition-colors duration-300 group-hover:text-[#ff8f3a]"
+          >Nos Offres</span
+        >
+        <span
+          class="absolute left-0 bottom-0 h-[2px] w-0 bg-[#ff8f3a] transition-all duration-300 group-hover:w-full"
+        ></span>
+      </li>
+      <li class="relative group cursor-pointer whitespace-nowrap">
+        <span class="transition-colors duration-300 group-hover:text-[#ff8f3a]"
+          >Nos Services</span
+        >
+        <span
+          class="absolute left-0 bottom-0 h-[2px] w-0 bg-[#ff8f3a] transition-all duration-300 group-hover:w-full"
+        ></span>
+      </li>
+      <li class="relative group cursor-pointer whitespace-nowrap">
+        <span class="transition-colors duration-300 group-hover:text-[#ff8f3a]"
+          >Nos Prestataires</span
+        >
+        <span
+          class="absolute left-0 bottom-0 h-[2px] w-0 bg-[#ff8f3a] transition-all duration-300 group-hover:w-full"
+        ></span>
+      </li>
+      <li class="relative group cursor-pointer whitespace-nowrap">
+        <span class="transition-colors duration-300 group-hover:text-[#ff8f3a]"
+          >Nous Contacter</span
+        >
+        <span
+          class="absolute left-0 bottom-0 h-[2px] w-0 bg-[#ff8f3a] transition-all duration-300 group-hover:w-full"
+        ></span>
+      </li>
+    </ul>
+  </nav>
+</section>
