@@ -3,10 +3,11 @@ import { Navbar } from "./components/navbar/navbar";
 import { Header } from "./components/header/header";
 import { Prestations } from "./components/prestations/prestations";
 import { Offers } from "./components/offers/offers";
+import { Choice } from "./components/choice/choice";
 
 @Component({
 	selector: "app-root",
-	imports: [Navbar,Header,Prestations,Offers],
+	imports: [Navbar,Header,Prestations,Offers,Choice],
 	standalone: true,
 	templateUrl: "./app.html",
 	styleUrl: "./app.css",
