@@ -1,0 +1,86 @@
+<form
+  [formGroup]="contactForm"
+  (ngSubmit)="onSubmit()"
+  class="max-w-3xl mx-auto my-8 p-6 sm:p-8 md:rounded-2xl bg-[#23477d] flex flex-col gap-6"
+>
+  <!-- Ligne Nom / Prénom -->
+  <div class="flex flex-col md:flex-row gap-6">
+    <!-- Nom -->
+    <div class="flex-1 flex flex-col">
+      <label for="lastName" class="mb-2 text-white">Nom</label>
+      <input
+        id="lastName"
+        type="text"
+        formControlName="lastName"
+        class="rounded-xl px-4 py-3 bg-[#e7e5e4] text-white placeholder-[#23477d] outline-none focus:ring-2 focus:ring-white/40"
+        placeholder="Votre nom"
+      />
+      @if (contactForm.get('lastName')?.invalid &&
+      contactForm.get('lastName')?.touched) {
+      <small class="mt-1 text-red-500">Le nom est obligatoire.</small>
+      }
+    </div>
+
+    <!-- Prénom -->
+    <div class="flex-1 flex flex-col">
+      <label for="firstName" class="mb-2 text-white">Prénom</label>
+      <input
+        id="firstName"
+        type="text"
+        formControlName="firstName"
+        class="rounded-xl px-4 py-3 bg-[#e7e5e4] text-[#23477d] placeholder-[#23477d] outline-none focus:ring-2 focus:ring-white/40"
+        placeholder="Votre prénom"
+      />
+      @if (contactForm.get('firstName')?.invalid &&
+      contactForm.get('firstName')?.touched) {
+      <small class="mt-1 text-red-500">Le prénom est obligatoire.</small>
+      }
+    </div>
+  </div>
+
+  <!-- Email -->
+  <div class="flex flex-col">
+    <label for="email" class="mb-2 text-white">Email</label>
+    <input
+      id="email"
+      type="email"
+      formControlName="email"
+      class="rounded-xl px-4 py-3 bg-[#e7e5e4] text-[#23477d] placeholder-[#23477d] outline-none focus:ring-2 focus:ring-white/40"
+      placeholder="Votre email"
+    />
+    @if (contactForm.get('email')?.invalid && contactForm.get('email')?.touched)
+    {
+    <small class="mt-1 text-red-500">
+      @if (contactForm.get('email')?.errors?.['required']) { Email obligatoire.
+      } @else { Email invalide. }
+    </small>
+    }
+  </div>
+
+  <!-- Message -->
+  <div class="flex flex-col">
+    <label for="message" class="mb-2 text-white">Message</label>
+    <textarea
+      id="message"
+      rows="5"
+      formControlName="message"
+      class="rounded-xl px-4 py-3 bg-[#e7e5e4] text-[#23477d] placeholder-[#23477d] outline-none focus:ring-2 focus:ring-white/40"
+      placeholder="Votre message"
+    ></textarea>
+    @if (contactForm.get('message')?.invalid &&
+    contactForm.get('message')?.touched) {
+    <small class="mt-1 text-red-500">Le message est obligatoire.</small>
+    }
+  </div>
+
+  <!-- Bouton -->
+  <div class="flex justify-center">
+    <button
+      type="submit"
+      [disabled]="contactForm.invalid"
+      class="bg-[#FF8F3A] hover:bg-[#c96214] text-white font-bold py-3 px-8 rounded-lg uppercase"
+    >
+      Envoyer
+    </button>
+  </div>
+</form>

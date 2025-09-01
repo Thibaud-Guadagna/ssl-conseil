@@ -1,0 +1,39 @@
+<section>
+  <h3
+    class="text-[#23477d] font-montserrat font-extrabold text-2xl md:text-5xl my-6 ml-4"
+  >
+    Ils nous font confiance :
+  </h3>
+  <p class="text-[#23477d] font-lato text-center">
+    Des entreprises de tous secteurs nous font confiance pour leurs recrutements
+    et la recherche de leurs futurs talents, pourquoi pas vous ?
+  </p>
+</section>
+
+@if (isBrowser) {
+<swiper-container
+  class="w-full !z-index:0 my-6"
+  loop="true"
+  [breakpoints]="{
+    '0': { slidesPerView: 2, spaceBetween: 16 },
+    '640': { slidesPerView: 4, spaceBetween: 20 },
+    '1024': { slidesPerView: 6, spaceBetween: 24 }
+  }"
+  autoplay-delay="2500"
+  autoplay-disable-on-interaction="false"
+  autoplay-pause-on-mouse-enter="true"
+  a11y="true"
+>
+  @for (l of logos; track l.src) {
+  <swiper-slide class="grid place-items-center">
+    <img
+      [src]="l.src"
+      [alt]="l.alt"
+      class="h-12 md:h-14 lg:h-16 w-auto object-contain"
+      loading="lazy"
+      decoding="async"
+    />
+  </swiper-slide>
+  }
+</swiper-container>
+}
