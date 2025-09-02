@@ -12,7 +12,9 @@
       <app-burger-button-component
         [isOpen]="isOpen"
         [toggle]="toggleMenu"
-        class=" fixed left-0 z-50"
+        class="z-50 md:hidden"
+        [class.fixed]="isOpen()"
+        [class.left-0]="true"
       />
     </div>
 
