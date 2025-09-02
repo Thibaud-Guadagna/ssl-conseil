@@ -1,23 +1,26 @@
 <h3
-  class="text-[#23477d] font-montserrat font-extrabold text-4xl md:text-6xl my-6 ml-2"
+  class="text-[#23477d] font-montserrat font-extrabold text-2xl md:text-6xl my-12 ml-2"
+  id="offres"
 >
   Nos offres
 </h3>
-<section class="flex flex-wrap justify-center px-4">
+<section class="flex flex-wrap justify-center">
   @for (offer of offers; track offer.offre_id) {
-  <div class="flex w-full sm:w-[48%] lg:w-[31%] xl:w-[23%] 2xl:w-[18%] bg-[#23477d] text-white rounded-3xl shadow-md
-            items-center gap-6 py-1 px-2 m-4 md:m-2 ">
-
+  <div
+    class="flex w-full sm:w-[48%] lg:w-[31%] xl:w-[23%] 2xl:w-[18%] bg-[#23477d] text-white rounded-3xl shadow-md items-center gap-6 py-1 px-2 m-4 md:m-2"
+  >
     <!-- Logo -->
     <div class="flex-shrink-0">
       <img src="sslconseillogofondbleu.jpg" alt="SSL Conseil" class="h-24" />
     </div>
 
     <div class="flex flex-col gap-2 flex-grow">
-      <h4 class="text-lg font-semibold font-montserrat text-right mr-1">{{ offer.titre }}</h4>
+      <h4 class="text-lg font-semibold font-montserrat text-right mr-1">
+        {{ offer.titre }}
+      </h4>
 
       <div class="flex items-center justify-end gap-2 text-sm font-lato">
-        <img src="maps.svg" alt="localisation"/>
+        <img src="maps.svg" alt="localisation" />
         <span>{{ offer.codepostal }}, {{ offer.ville }}</span>
       </div>
 
@@ -26,11 +29,13 @@
         <span>{{ offer.sal_min }} € – {{ offer.sal_max }} €</span>
       </div>
 
-      <div class="mt-2 flex justify-end p-2">
+      <div class="flex justify-end p-2">
         <a
           href="{{ offer.apply_url }}"
           target="_blank"
+          rel="noopener"
           class="bg-orange-400 hover:bg-[#c96214] text-white px-4 py-2 rounded-lg text-sm font-medium inline-block"
+          (click)="openWithoutHash($event, offer.apply_url)"
         >
           En savoir plus
         </a>

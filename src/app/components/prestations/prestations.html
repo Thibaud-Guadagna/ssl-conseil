@@ -1,5 +1,6 @@
 <h3
-  class="text-[#23477d] font-montserrat font-extrabold text-4xl md:text-6xl my-6 ml-2"
+  class="text-[#23477d] font-montserrat font-extrabold text-2xl md:text-6xl my-6 md:my-12 ml-2"
+  id="prestations"
 >
   Nos prestations
 </h3>
@@ -7,68 +8,147 @@
   class="bg-white border-2 h-auto my-8 mx-4 rounded-3xl shadow-lg p-1 md:p-6"
 >
   <h4
-    class="text-[#23477d] font-montserrat font-extrabold text-center text-3xl mb-6"
+    class="text-[#23477d] font-montserrat font-extrabold text-center text-2xl md:text-4xl mb-6"
   >
     Acquisition de Talents
   </h4>
   <section
-    class="flex flex-col md:flex-row lg:flex-row justify-center items-center"
+    class="flex flex-col items-center md:flex-row md:justify-center md:items-center md:gap-x-2 lg:gap-x-6"
   >
-    <section class="flex">
-      <div class="flex flex-col justify-start w-auto mt-4">
-        <img src="graph.svg" alt="stats icon" class="= mx-1 h-11" />
-        <h5 class="text-[#13477d] text-center mx-1">Analyse du besoin</h5>
-      </div>
-      <img src="arrow.svg" alt="arrow" class="hidden md:block w-16" />
-    </section>
-    <section class="flex">
-      <div class="flex flex-col justify-start w-auto mt-4">
-        <img src="search.svg" alt="search icon" class="= mx-1 h-11" />
-        <h5 class="text-[#13477d] text-center mx-1">Recherche du candidat</h5>
-      </div>
-      <img src="arrow.svg" alt="arrow" class="hidden md:block w-16" />
-    </section>
-    <section class="flex">
-      <div class="flex flex-col justify-start w-auto mt-4">
-        <img src="bubble.svg" alt="bubble icon" class="= mx-1 h-11" />
-        <h5 class="text-[#13477d] text-center mx-1">Entretien Candidat</h5>
-      </div>
-      <img src="arrow.svg" alt="arrow" class="hidden md:block w-16" />
-    </section>
-    <section class="flex">
-      <div class="flex flex-col justify-start w-auto mt-4">
-        <img src="eval.svg" alt="evaluation icon" class="= mx-1 h-11" />
-        <h5 class="text-[#13477d] text-center mx-1">Évaluation</h5>
-      </div>
-      <img src="arrow.svg" alt="arrow" class="hidden md:block w-16" />
-    </section>
-    <section class="flex">
-      <div class="flex flex-col justify-start w-auto mt-4">
-        <img src="avatar.svg" alt="avatar icon" class="= mx-1 h-11" />
-        <h5 class="text-[#13477d] text-center mx-1">Présentation du profil</h5>
-      </div>
-      <img src="arrow.svg" alt="arrow" class="hidden md:block w-16" />
-    </section>
-    <section class="flex">
-      <div class="flex flex-col justify-start w-auto mt-4">
-        <img src="integration.svg" alt="integration icon" class="= mx-1 h-11" />
-        <h5 class="text-[#13477d] text-center my-2 mx-1">Intégration</h5>
-      </div>
-      <img src="arrow.svg" alt="arrow" class="hidden md:block w-16" />
-    </section>
-    <section class="flex">
-      <div class="flex flex-col justify-start w-auto mt-4">
-        <img src="follow.svg" alt="following icon" class="= mx-1 h-11" />
-        <h5 class="text-[#13477d] text-center mx-1">Suivi</h5>
-      </div>
-    </section>
+    <!-- Étape 1 -->
+    <div class="flex flex-col items-center mt-4">
+      <img
+        src="graph.svg"
+        alt="stats icon"
+        class="w-12 h-12 md:w-12 md:h-12 lg:w-12 lg:h-12 object-contain"
+      />
+      <h5
+        class="text-[#13477d] text-center mt-1 md:text-xs lg:text-lg md:max-w-[5rem] lg:max-w-none md:leading-tight"
+      >
+        Analyse du besoin
+      </h5>
+    </div>
+    <img
+      src="arrow.svg"
+      alt="arrow"
+      class="hidden md:inline-block w-10 h-4 lg:w-16 lg:h-6 object-contain mx-1 lg:mx-4 shrink-0"
+    />
+
+    <!-- Étape 2 -->
+    <div class="flex flex-col items-center mt-4">
+      <img
+        src="search.svg"
+        alt="search icon"
+        class="w-12 h-12 object-contain"
+      />
+      <h5
+        class="text-[#13477d] text-center mt-1 md:text-xs lg:text-lg md:max-w-[5rem] lg:max-w-none md:leading-tight"
+      >
+        Recherche du candidat
+      </h5>
+    </div>
+    <img
+      src="arrow.svg"
+      alt="arrow"
+      class="hidden md:inline-block w-10 h-4 lg:w-16 lg:h-6 object-contain mx-1 lg:mx-4 shrink-0"
+    />
+
+    <!-- Étape 3 -->
+    <div class="flex flex-col items-center mt-4">
+      <img
+        src="bubble.svg"
+        alt="bubble icon"
+        class="w-12 h-12 object-contain"
+      />
+      <h5
+        class="text-[#13477d] text-center mt-1 md:text-xs lg:text-lg md:max-w-[5rem] lg:max-w-none md:leading-tight"
+      >
+        Entretien Candidat
+      </h5>
+    </div>
+    <img
+      src="arrow.svg"
+      alt="arrow"
+      class="hidden md:inline-block w-10 h-4 lg:w-16 lg:h-6 object-contain mx-1 lg:mx-4 shrink-0"
+    />
+
+    <!-- Étape 4 -->
+    <div class="flex flex-col items-center mt-4">
+      <img
+        src="eval.svg"
+        alt="evaluation icon"
+        class="w-12 h-12 object-contain"
+      />
+      <h5
+        class="text-[#13477d] text-center mt-1 md:text-xs lg:text-lg md:max-w-[5rem] lg:max-w-none md:leading-tight"
+      >
+        Évaluation
+      </h5>
+    </div>
+    <img
+      src="arrow.svg"
+      alt="arrow"
+      class="hidden md:inline-block w-10 h-4 lg:w-16 lg:h-6 object-contain mx-1 lg:mx-4 shrink-0"
+    />
+
+    <!-- Étape 5 -->
+    <div class="flex flex-col items-center mt-4">
+      <img
+        src="avatar.svg"
+        alt="avatar icon"
+        class="w-12 h-12 object-contain"
+      />
+      <h5
+        class="text-[#13477d] text-center mt-1 md:text-xs lg:text-lg md:max-w-[5rem] lg:max-w-none md:leading-tight"
+      >
+        Présentation du profil
+      </h5>
+    </div>
+    <img
+      src="arrow.svg"
+      alt="arrow"
+      class="hidden md:inline-block w-10 h-4 lg:w-16 lg:h-6 object-contain mx-1 lg:mx-4 shrink-0"
+    />
+
+    <!-- Étape 6 -->
+    <div class="flex flex-col items-center mt-4">
+      <img
+        src="integration.svg"
+        alt="integration icon"
+        class="w-12 h-12 object-contain"
+      />
+      <h5
+        class="text-[#13477d] text-center mt-1 md:text-xs lg:text-lg md:max-w-[5rem] lg:max-w-none md:leading-tight"
+      >
+        Intégration
+      </h5>
+    </div>
+    <img
+      src="arrow.svg"
+      alt="arrow"
+      class="hidden md:inline-block w-10 h-4 lg:w-16 lg:h-6 object-contain mx-1 lg:mx-4 shrink-0"
+    />
+
+    <!-- Étape 7 (pas de flèche après) -->
+    <div class="flex flex-col items-center mt-4">
+      <img
+        src="follow.svg"
+        alt="following icon"
+        class="w-12 h-12 object-contain"
+      />
+      <h5
+        class="text-[#13477d] text-center mt-1 md:text-xs lg:text-lg md:max-w-[5rem] lg:max-w-none md:leading-tight"
+      >
+        Suivi
+      </h5>
+    </div>
   </section>
 </section>
 <section
   class="bg-white border-2 h-auto my-4 mx-4 rounded-3xl shadow-lg p-1 md:p-6"
 >
   <h4
-    class="text-[#23477d] font-montserrat font-extrabold text-center text-3xl mb-12"
+    class="text-[#23477d] font-montserrat font-extrabold text-center text-2xl md:text-4xl mb-12"
   >
     Consulting en transformation digitale
   </h4>

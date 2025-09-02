@@ -4,5 +4,9 @@
 @tailwind utilities;
 
 body {
-	background-color: #e4e2dd;
+  background-color: #e4e2dd;
+}
+
+html {
+  scroll-behavior: smooth;
 }

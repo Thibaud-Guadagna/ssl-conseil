@@ -2,7 +2,7 @@
   <nav class="relative flex flex-col md:flex-row items-center justify-between">
     <!-- Top row: Logo + Burger -->
     <div
-      class="flex w-full flex-row-reverse lg:flex-row md:flex-row justify-between items-center"
+      class="z-50 flex w-full flex-row-reverse lg:flex-row md:flex-row justify-between items-center"
     >
       <img
         src="/sslconseillogofondbleu.jpg"
@@ -12,64 +12,78 @@
       <app-burger-button-component
         [isOpen]="isOpen"
         [toggle]="toggleMenu"
-        class="z-50"
+        class="z-60"
       />
     </div>
 
     <!-- Mobile menu -->
-
     <ul
       class="z-20 fixed top-0 left-0 h-full w-2/3 bg-[#23477D]/95 text-white flex flex-col gap-6 px-6 pt-24 md:hidden transform transition-transform duration-300 ease-in-out text-lg"
       [class.translate-x-0]="isOpen()"
       [class.-translate-x-full]="!isOpen()"
     >
-      <li>Nos Prestations</li>
-      <li>Nos Offres</li>
-      <li>Nos Services</li>
-      <li>Nos Partenaires</li>
-      <li>Nous Contacter</li>
+      <li><a href="#prestations">Nos Prestations</a></li>
+      <li><a href="#offres">Nos Offres</a></li>
+      <li><a href="#services">Nos Services</a></li>
+      <li><a href="#partenaires">Nos Partenaires</a></li>
+      <li><a href="#contact">Nous Contacter</a></li>
     </ul>
 
     <!-- Desktop menu -->
     <ul
-      class="hidden md:flex gap-6 text-white mt-4 md:mt-0 ml-auto md:mr-4 lg:text-lg"
+      class="hidden md:flex gap-6 text-white mt-4 md:mt-0 ml-auto md:mr-4 lg:text-lg md:text-sm"
     >
       <li class="relative group cursor-pointer whitespace-nowrap">
-        <span class="transition-colors duration-300 group-hover:text-[#ff8f3a]"
-          >Nos Prestations</span
+        <a
+          href="#prestations"
+          class="transition-colors duration-300 group-hover:text-[#ff8f3a]"
         >
+          Nos Prestations
+        </a>
         <span
           class="absolute left-0 bottom-0 h-[2px] w-0 bg-[#ff8f3a] transition-all duration-300 group-hover:w-full"
         ></span>
       </li>
       <li class="relative group cursor-pointer whitespace-nowrap">
-        <span class="transition-colors duration-300 group-hover:text-[#ff8f3a]"
-          >Nos Offres</span
+        <a
+          href="#offres"
+          class="transition-colors duration-300 group-hover:text-[#ff8f3a]"
         >
+          Nos Offres
+        </a>
         <span
           class="absolute left-0 bottom-0 h-[2px] w-0 bg-[#ff8f3a] transition-all duration-300 group-hover:w-full"
         ></span>
       </li>
       <li class="relative group cursor-pointer whitespace-nowrap">
-        <span class="transition-colors duration-300 group-hover:text-[#ff8f3a]"
-          >Nos Services</span
+        <a
+          href="#services"
+          class="transition-colors duration-300 group-hover:text-[#ff8f3a]"
         >
+          Nos Services
+        </a>
         <span
           class="absolute left-0 bottom-0 h-[2px] w-0 bg-[#ff8f3a] transition-all duration-300 group-hover:w-full"
         ></span>
       </li>
       <li class="relative group cursor-pointer whitespace-nowrap">
-        <span class="transition-colors duration-300 group-hover:text-[#ff8f3a]"
-          >Nos Prestataires</span
+        <a
+          href="#partenaires"
+          class="transition-colors duration-300 group-hover:text-[#ff8f3a]"
         >
+          Nos Partenaires
+        </a>
         <span
           class="absolute left-0 bottom-0 h-[2px] w-0 bg-[#ff8f3a] transition-all duration-300 group-hover:w-full"
         ></span>
       </li>
       <li class="relative group cursor-pointer whitespace-nowrap">
-        <span class="transition-colors duration-300 group-hover:text-[#ff8f3a]"
-          >Nous Contacter</span
+        <a
+          href="#contact"
+          class="transition-colors duration-300 group-hover:text-[#ff8f3a]"
         >
+          Nous Contacter
+        </a>
         <span
           class="absolute left-0 bottom-0 h-[2px] w-0 bg-[#ff8f3a] transition-all duration-300 group-hover:w-full"
         ></span>

@@ -34,4 +34,20 @@ export class Offers implements OnInit {
   this.offers = data as Offer[];
 });
 	}
+	openWithoutHash(event: MouseEvent, url: string): void {
+  event.preventDefault(); // empêche le lien de suivre l’ancre
+  const clean = this.stripHash(url);
+  window.open(clean, '_blank', 'noopener'); // ouvre en haut de page
+}
+
+private stripHash(url: string): string {
+  try {
+    const u = new URL(url);
+    u.hash = '';          // enlève #postuler / #apply / etc.
+    return u.toString();
+  } catch {
+    // si URL relative
+    return url.split('#')[0];
+  }
+}
 }
