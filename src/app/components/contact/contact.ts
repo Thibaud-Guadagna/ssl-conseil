@@ -7,7 +7,7 @@ import {
 } from "@angular/forms";
 import emailjs from "@emailjs/browser";
 import Toastify from "toastify-js";
-import { environment } from "../../../environnement/environnement";
+import { environment } from "../../../environnement/environnement"
 
 @Component({
 	selector: "app-contact",
