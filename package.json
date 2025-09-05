@@ -2,15 +2,16 @@
 	"name": "sslconseil",
 	"version": "0.0.0",
 	"scripts": {
-  "ng": "ng",
-  "start": "ng serve",
-  "build": "node tools/generate-env.cjs && ng build --configuration production",
-  "build:ssr": "ng build && ng run sslconseil:server",
-  "watch": "ng build --watch --configuration development",
-  "test": "ng test",
-  "serve:ssr:sslconseil": "node dist/sslconseil/server/server.mjs"
-},
+		"ng": "ng",
+		"start": "ng serve",
+		"build": "node tools/generate-env.cjs && ng build --configuration production",
+		"build:ssr": "ng build && ng run sslconseil:server",
+		"watch": "ng build --watch --configuration development",
+		"test": "ng test",
+		"serve:ssr:sslconseil": "node dist/sslconseil/server/server.mjs",
 
+		"postinstall": "node tools/generate-env.cjs"
+	},
 
 	"prettier": {
 		"overrides": [
