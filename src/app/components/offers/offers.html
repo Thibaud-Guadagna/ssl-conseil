@@ -4,13 +4,15 @@
 >
   Nos offres
 </h3>
-<section class="flex flex-wrap justify-center">
-  @for (offer of offers; track offer.offre_id) {
-  <div
-    class="flex w-full sm:w-[48%] lg:w-[25%] xl:w-[23%] 2xl:w-[24%] bg-[#23477d] text-white rounded-3xl shadow-md items-stretch py-1 px-2 m-4 md:m-2 h-40"
+
+<!-- Passe en GRID au lieu de flex-wrap pour éviter les décalages -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-2">
+  @for (offer of displayedOffers(); track offer.offre_id) {
+  <article
+    class="flex h-full bg-[#23477d] text-white rounded-3xl shadow-md p-3"
   >
     <!-- Logo -->
-    <div class="flex-shrink-0 flex items-center">
+    <div class="flex-shrink-0 flex items-start pt-1 pr-2">
       <img
         src="sslconseillogofondbleu.jpg"
         alt="SSL Conseil"
@@ -18,24 +20,29 @@
       />
     </div>
 
-    <div class="flex flex-col flex-1 min-w-0 px-1 pt-1 justify-between">
-      <h4 class="text-lg font-semibold font-montserrat text-right">
+    <!-- Colonne contenu : occupe toute la hauteur -->
+    <div class="flex flex-col flex-1 min-w-0">
+      <!-- Titre : 2 lignes max, hauteur “stable” -->
+      <h4
+        class="text-lg font-semibold font-montserrat text-right line-clamp-2 min-h-[3.5rem]"
+      >
         {{ offer.titre }}
       </h4>
 
-      <div class="flex items-center justify-end gap-2 text-sm font-lato">
+      <div class="mt-1 flex items-center justify-end gap-2 text-sm font-lato">
         <img src="maps.svg" alt="localisation" />
-        <span>{{ offer.codepostal }}, {{ offer.ville }}</span>
+        <span class="truncate">{{ offer.codepostal }}, {{ offer.ville }}</span>
       </div>
 
       <div class="flex items-center justify-end gap-2 text-sm font-lato">
-        <img src="money.svg" alt="localisation" />
-        <span>{{ offer.sal_min }}  – {{ offer.sal_max }} </span>
+        <img src="money.svg" alt="salaire" />
+        <span class="truncate">{{ offer.sal_min }} – {{ offer.sal_max }}</span>
       </div>
 
-      <div class="flex justify-end items-end p-1">
+      <!-- Le bouton est poussé en bas de la carte -->
+      <div class="mt-auto flex justify-end pt-2">
         <a
-          href="{{ offer.apply_url }}"
+          [href]="offer.apply_url"
           target="_blank"
           rel="noopener"
           class="bg-orange-400 hover:bg-[#c96214] text-white px-4 py-2 rounded-lg text-sm font-medium inline-block"
@@ -45,6 +52,27 @@
         </a>
       </div>
     </div>
-  </div>
+  </article>
   }
 </section>
+
+<!-- Bouton Voir plus / Voir moins -->
+@if (offers.length > 0) {
+<div class="flex justify-center my-8">
+  @if (!expanded() && offers.length > displayedOffers().length) {
+  <button
+    (click)="toggle()"
+    class="bg-[#23477d] text-white px-6 py-3 rounded-xl font-montserrat font-semibold hover:bg-[#163257] transition"
+  >
+    Voir plus
+  </button>
+  } @else {
+  <button
+    (click)="toggle()"
+    class="bg-[#23477d] text-white px-6 py-3 rounded-xl font-montserrat font-semibold hover:bg-[#163257] transition"
+  >
+    Voir moins
+  </button>
+  }
+</div>
+}
