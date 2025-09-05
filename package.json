@@ -2,17 +2,17 @@
 	"name": "sslconseil",
 	"version": "0.0.0",
 	"scripts": {
-		"ng": "ng",
-		"start": "ng serve",
-		"build": "ng build",
-		"build:ssr": "ng build && ng run sslconseil:server",
-		"watch": "ng build --watch --configuration development",
-		"test": "ng test",
-		"serve:ssr:sslconseil": "node dist/sslconseil/server/server.mjs",
+  "ng": "ng",
+  "start": "ng serve",
+  "build": "ng build --configuration production",
+  "build:ssr": "ng build && ng run sslconseil:server",
+  "watch": "ng build --watch --configuration development",
+  "test": "ng test",
+  "serve:ssr:sslconseil": "node dist/sslconseil/server/server.mjs",
 
-		"vercel-build": "node -e \"const fs=require('fs');const path='src/environnement';const env=process.env;fs.mkdirSync(path,{recursive:true});const pick=(k,alt)=>env[k]||env[alt];const JV=pick('JOB_POSTING_URL','URL_DE_L_OFFRE_D_EMPLOI');const SID=env.EMAILJS_SERVICE_ID;const TID=pick('EMAILJS_TEMPLATE_ID','ID_TEMPLATE_EMAILJS');const PK=env.EMAILJS_PUBLIC_KEY;const TOK=env.API_TOKEN;const miss=[['JOB_POSTING_URL',JV],['EMAILJS_SERVICE_ID',SID],['EMAILJS_TEMPLATE_ID',TID],['EMAILJS_PUBLIC_KEY',PK],['API_TOKEN',TOK]].filter(([k,v])=>!v).map(([k])=>k);if(miss.length){console.error('Missing env vars: '+miss.join(', '));process.exit(1);}const mk=(p)=>`export const environment = {\\n  production: ${p},\\n  jobPostingUrl: ${JSON.stringify(JV)},\\n  emailjsServiceId: ${JSON.stringify(SID)},\\n  emailjsTemplateId: ${JSON.stringify(TID)},\\n  emailjsPublicKey: ${JSON.stringify(PK)},\\n  apiToken: ${JSON.stringify(TOK)},\\n};\\n`;fs.writeFileSync(path+'/environnement.ts',mk(false));fs.writeFileSync(path+'/environnement.prod.ts',mk(true));\" && ng build --configuration=production"
-	},
-
+  "prebuild": "node tools/generate-env.cjs",
+  "vercel-build": "npm run build"
+},
 	"prettier": {
 		"overrides": [
 			{
