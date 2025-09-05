@@ -8,8 +8,11 @@
 		"build:ssr": "ng build && ng run sslconseil:server",
 		"watch": "ng build --watch --configuration development",
 		"test": "ng test",
-		"serve:ssr:sslconseil": "node dist/sslconseil/server/server.mjs"
+		"serve:ssr:sslconseil": "node dist/sslconseil/server/server.mjs",
+
+		"vercel-build": "node tools/generate-env.mjs && ng build --configuration=production"
 	},
+
 	"prettier": {
 		"overrides": [
 			{
