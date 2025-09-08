@@ -1,63 +1,74 @@
 {
-	"name": "sslconseil",
-	"version": "0.0.0",
-	"scripts": {
-		"ng": "ng",
-		"start": "ng serve",
-		"build": "ng build --configuration production",
-		"build:ssr": "ng build --ssr",
-		"serve:ssr": "node dist/sslconseil/server/server.mjs",
-		"watch": "ng build --watch --configuration development",
-		"test": "ng test"
-	},
-	"prettier": {
-		"overrides": [
-			{
-				"files": "*.html",
-				"options": {
-					"parser": "angular"
-				}
-			}
-		]
-	},
-	"private": true,
-	"dependencies": {
-		"@angular/cdk": "^20.2.2",
-		"@angular/common": "^20.1.0",
-		"@angular/compiler": "^20.1.0",
-		"@angular/core": "^20.1.0",
-		"@angular/forms": "^20.1.0",
-		"@angular/platform-browser": "^20.1.0",
-		"@angular/platform-server": "^20.1.0",
-		"@angular/router": "^20.1.0",
-		"@angular/ssr": "^20.1.0",
-		"@emailjs/browser": "^4.4.1",
-		"@types/toastify-js": "^1.12.4",
-		"dotenv": "^17.2.2",
-		"express": "^5.1.0",
-		"rxjs": "~7.8.0",
-		"swiper": "^11.2.10",
-		"toastify-js": "^1.12.0",
-		"tslib": "^2.3.0",
-		"zone.js": "~0.15.0"
-	},
-	"devDependencies": {
-		"@angular/build": "^20.2.2",
-		"@angular/cli": "^20.2.2",
-		"@angular/compiler-cli": "^20.1.0",
-		"@biomejs/biome": "2.2.2",
-		"@types/express": "^5.0.1",
-		"@types/jasmine": "~5.1.0",
-		"@types/node": "^20.19.13",
-		"autoprefixer": "^10.4.21",
-		"jasmine-core": "~5.8.0",
-		"karma": "~6.4.0",
-		"karma-chrome-launcher": "~3.2.0",
-		"karma-coverage": "~2.2.0",
-		"karma-jasmine": "~5.1.0",
-		"karma-jasmine-html-reporter": "~2.1.0",
-		"postcss": "^8.5.6",
-		"tailwindcss": "^3.4.17",
-		"typescript": "~5.8.2"
-	}
+  "name": "sslconseil",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve --ssr",
+    "build": "ng build --configuration production",
+    "build:ssr": "ng build --ssr",
+    "serve:ssr": "node dist/sslconseil/server/server.mjs",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  },
+  "prettier": {
+    "overrides": [
+      {
+        "files": "*.html",
+        "options": {
+          "parser": "angular"
+        }
+      }
+    ]
+  },
+  "overrides": {
+  "@vercel/node": {
+    "path-to-regexp": "6.3.0",
+    "esbuild": "^0.25.0",
+    "undici": "^6.0.0"
+  }
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@angular/cdk": "^20.2.2",
+    "@angular/common": "^20.1.0",
+    "@angular/compiler": "^20.1.0",
+    "@angular/core": "^20.1.0",
+    "@angular/forms": "^20.1.0",
+    "@angular/platform-browser": "^20.1.0",
+    "@angular/platform-server": "^20.1.0",
+    "@angular/router": "^20.1.0",
+    "@angular/ssr": "^20.1.0",
+    "@emailjs/browser": "^4.4.1",
+    "@types/toastify-js": "^1.12.4",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "rxjs": "~7.8.0",
+    "swiper": "^11.2.10",
+    "toastify-js": "^1.12.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.15.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^20.2.2",
+    "@angular/cli": "^20.2.2",
+    "@angular/compiler-cli": "^20.1.0",
+    "@biomejs/biome": "2.2.2",
+    "@types/express": "^5.0.1",
+    "@types/jasmine": "~5.1.0",
+    "@types/node": "^20.19.13",
+    "@vercel/node": "^5.3.21",
+    "autoprefixer": "^10.4.21",
+    "jasmine-core": "~5.8.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "typescript": "~5.8.2"
+  }
 }

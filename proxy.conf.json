@@ -1,0 +1,14 @@
+{
+	"/api/offres": {
+		"target": "https://api.jobposting.pro",
+		"secure": true,
+		"changeOrigin": true,
+		"logLevel": "debug",
+		"pathRewrite": {
+			"^/api/offres": "/clientsjson?id=101619"
+		},
+		"headers": {
+			"api-token": "MTAzNzUyOTk5"
+		}
+	}
+}
