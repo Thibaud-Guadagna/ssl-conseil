@@ -55,19 +55,19 @@ export class Offers implements OnInit {
 	);
 
 	ngOnInit(): void {
-		// règle d’affichage côté client
+		// Règle d’affichage
 		if (this.isBrowser) {
 			this.setVisibleCountFromWidth(window.innerWidth);
 		} else {
-			// défaut SSR : on rend 8 pour éviter l’écran vide
+			// SSR : ne fait AUCUN fetch, se contente d'un rendu minimal
 			this.visibleCount.set(8);
 		}
 
-		const rawUrl = "/api/offres";
+		const rawUrl = "/api/offres"; // fetch côté client uniquement
 		const token = this.cfg.apiToken?.trim() || "";
 		const { url, headers, params } = this.buildRequest(rawUrl, token);
 
-		// 1) Regarder d’abord si on a déjà un cache (navigations suivantes)
+		// 1) Vérifier un cache existant (utile entre navigations côté client)
 		const cached = this.ts.get(OFFERS_KEY, null as unknown as Offer[]);
 		if (cached && Array.isArray(cached) && cached.length > 0) {
 			this.offers = cached;
@@ -75,26 +75,13 @@ export class Offers implements OnInit {
 			return;
 		}
 
-		// 2) SSR : on FECH côté serveur pour avoir un 1er paint non vide
+		// 2) SSR : plus aucun appel réseau
 		if (!this.isBrowser) {
-			this.loading.set(true);
-			this.http.get<Offer[]>(url, { headers, params }).subscribe({
-				next: (data) => {
-					this.offers = data ?? [];
-					this.ts.set(OFFERS_KEY, this.offers); // hydratation côté client
-					this.loading.set(false);
-				},
-				error: (err) => {
-					console.error("Offers SSR fetch failed:", err);
-					this.offers = [];
-					this.loading.set(false);
-					// pas d’UI d’erreur agressive côté SSR, on laisse le client retenter
-				},
-			});
+			this.loading.set(false);
 			return;
 		}
 
-		// 3) Client : chargement classique (si pas déjà en cache)
+		// 3) Client : chargement classique vers /api/offres (sans header)
 		this.loading.set(true);
 		this.errorMsg.set(null);
 
@@ -102,6 +89,7 @@ export class Offers implements OnInit {
 			next: (data) => {
 				this.offers = data ?? [];
 				this.loading.set(false);
+				// Cache TransferState côté client uniquement
 				this.ts.set(OFFERS_KEY, this.offers);
 			},
 			error: (err) => {
