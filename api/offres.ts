@@ -1,6 +1,5 @@
 // api/offres.ts
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-
 export const config = { runtime: "nodejs" };
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -10,8 +9,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 	}
 
 	try {
-		// token déjà présent dans l'env, on l'utilise tel quel
-		const apiToken = process.env["API_TOKEN"]!;
+		const apiToken = process.env["API_TOKEN"];
+		if (!apiToken) {
+			// évite le crash silencieux en Preview si la var n'est pas définie
+			return res.status(500).json({
+				error: "API token absent pour cet environnement.",
+				env: process.env["VERCEL_ENV"] || "unknown",
+			});
+		}
+
 		const url = "https://api.jobposting.pro/clientsjson?id=101619";
 
 		const controller = new AbortController();
@@ -21,7 +27,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 			method: "GET",
 			headers: {
 				Accept: "application/json",
-				"api-token": apiToken, // <- conforme au mail du provider
+				"api-token": apiToken,
 			},
 			signal: controller.signal,
 		}).catch((e) => {
@@ -33,7 +39,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
 		if (!response.ok) {
 			const body = await response.text().catch(() => "");
-			// On log côté serveur et on renvoie un diagnostic côté client (utile pour toi dans l’onglet Network)
 			console.error("JobPosting upstream error", {
 				status: response.status,
 				statusText: response.statusText,
