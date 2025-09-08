@@ -3,7 +3,7 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
 	try {
-		const apiToken = process.env.API_TOKEN;
+		const apiToken = process.env["API_TOKEN"];
 		if (!apiToken) {
 			res.status(500).json({
 				error: "API_TOKEN manquant dans les variables d'environnement.",
@@ -17,7 +17,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
-				"api-token": process.env.API_TOKEN as string,
+				"api-token": apiToken,
 			},
 		});
 
@@ -29,7 +29,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
 		const data = await response.json();
 		res.status(200).json(data);
-	} catch (err: any) {
+	} catch (err) {
 		console.error("Erreur API /offre :", err);
 		res.status(500).json({ error: "Erreur interne du serveur" });
 	}
