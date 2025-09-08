@@ -1,5 +1,13 @@
 {
-	"buildCommand": "ng build --configuration=production",
+	"functions": {
+		"api/ssr/index.mjs": {
+			"runtime": "nodejs20.x"
+		}
+	},
+	"buildCommand": "npm ci && npm run build:ssr",
 	"outputDirectory": "dist/sslconseil/browser",
-	"rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+	"routes": [
+		{ "src": "/assets/(.*)", "dest": "/assets/$1" },
+		{ "src": "/(.*)", "dest": "/api/ssr/index.mjs" }
+	]
 }
