@@ -1,6 +1,7 @@
-// api/offres.ts
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-export const config = { runtime: "nodejs20.x" };
+
+// OK sur Vercel :
+export const config = { runtime: "nodejs" };
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
 	if (req.method !== "GET") {
@@ -9,10 +10,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 	}
 
 	try {
-		const apiToken = process.env["API_TOKEN"]; // <-- gardé en bracket notation
+		const apiToken = process.env["API_TOKEN"];
 		const url = "https://api.jobposting.pro/clientsjson?id=101619";
 
-		// timeout 10s pour éviter l’attente infinie
 		const controller = new AbortController();
 		const to = setTimeout(() => controller.abort(), 10_000);
 
@@ -20,7 +20,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 			method: "GET",
 			headers: {
 				Accept: "application/json",
-				"api-token": apiToken as string, // header exactement comme dans le mail
+				"api-token": apiToken as string, // header exact demandé
 			},
 			signal: controller.signal,
 		}).catch((e) => {
@@ -32,7 +32,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
 		if (!response.ok) {
 			const body = await response.text().catch(() => "");
-			// log côté serveur (visible dans Vercel -> Deployments -> Function logs)
 			console.error("JobPosting upstream error", {
 				status: response.status,
 				statusText: response.statusText,
