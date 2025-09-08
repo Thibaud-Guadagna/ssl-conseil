@@ -4,15 +4,12 @@
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve",
-		"build": "node tools/generate-env.cjs && ng build --configuration production",
-		"build:ssr": "ng build && ng run sslconseil:server",
+		"build": "ng build --configuration production",
+		"build:ssr": "ng build --ssr",
+		"serve:ssr": "node dist/sslconseil/server/server.mjs",
 		"watch": "ng build --watch --configuration development",
-		"test": "ng test",
-		"serve:ssr:sslconseil": "node dist/sslconseil/server/server.mjs",
-
-		"postinstall": "node tools/generate-env.cjs"
+		"test": "ng test"
 	},
-
 	"prettier": {
 		"overrides": [
 			{
@@ -36,6 +33,7 @@
 		"@angular/ssr": "^20.1.0",
 		"@emailjs/browser": "^4.4.1",
 		"@types/toastify-js": "^1.12.4",
+		"dotenv": "^17.2.2",
 		"express": "^5.1.0",
 		"rxjs": "~7.8.0",
 		"swiper": "^11.2.10",
@@ -44,13 +42,13 @@
 		"zone.js": "~0.15.0"
 	},
 	"devDependencies": {
-		"@angular/build": "^20.1.0",
-		"@angular/cli": "^20.1.0",
+		"@angular/build": "^20.2.2",
+		"@angular/cli": "^20.2.2",
 		"@angular/compiler-cli": "^20.1.0",
 		"@biomejs/biome": "2.2.2",
 		"@types/express": "^5.0.1",
 		"@types/jasmine": "~5.1.0",
-		"@types/node": "^20.17.19",
+		"@types/node": "^20.19.13",
 		"autoprefixer": "^10.4.21",
 		"jasmine-core": "~5.8.0",
 		"karma": "~6.4.0",

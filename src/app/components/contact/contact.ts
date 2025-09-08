@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, inject } from "@angular/core";
 import {
 	FormBuilder,
 	FormGroup,
@@ -7,7 +7,7 @@ import {
 } from "@angular/forms";
 import emailjs from "@emailjs/browser";
 import Toastify from "toastify-js";
-import { environment } from "../../../environnement/environnement"
+import { PUBLIC_RUNTIME_CONFIG, PublicRuntimeConfig } from "../../runtime-config.token";
 
 @Component({
 	selector: "app-contact",
@@ -22,7 +22,8 @@ export class Contact implements OnInit {
 	sent = false;
 	errorMsg = "";
 
-	constructor(private fb: FormBuilder) {}
+	private fb = inject(FormBuilder);
+	private cfg: PublicRuntimeConfig = inject(PUBLIC_RUNTIME_CONFIG);
 
 	ngOnInit(): void {
 		this.contactForm = this.fb.group({
@@ -53,13 +54,12 @@ export class Contact implements OnInit {
 
 		emailjs
 			.send(
-				environment.emailjsServiceId,
-				environment.emailjsTemplateId,
+				this.cfg.emailjsServiceId!,
+				this.cfg.emailjsTemplateId!,
 				templateParams,
-				{ publicKey: environment.emailjsPublicKey },
+				{ publicKey: this.cfg.emailjsPublicKey! },
 			)
 			.then(() => {
-			
 				this.sending = false;
 				this.sent = true;
 				this.contactForm.reset();
@@ -70,11 +70,10 @@ export class Contact implements OnInit {
 					gravity: "bottom",
 					position: "right",
 					close: true,
-					style: { background: "#FF8F3A" }, // ta couleur bouton
+					style: { background: "#FF8F3A" },
 				}).showToast();
 			})
 			.catch((err) => {
-			
 				this.sending = false;
 				this.errorMsg = "Échec de l’envoi. Réessaie.";
 
@@ -85,7 +84,7 @@ export class Contact implements OnInit {
 					gravity: "bottom",
 					position: "right",
 					close: true,
-					style: { background: "#dc2626" }, // rouge erreur
+					style: { background: "#dc2626" },
 				}).showToast();
 			});
 	}
