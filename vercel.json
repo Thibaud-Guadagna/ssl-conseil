@@ -1,13 +1,6 @@
 {
-	"functions": {
-		"api/ssr/index.mjs": {
-			"runtime": "nodejs20.x"
-		}
-	},
+	"$schema": "https://openapi.vercel.sh/vercel.json",
 	"buildCommand": "npm ci && npm run build:ssr",
 	"outputDirectory": "dist/sslconseil/browser",
-	"routes": [
-		{ "src": "/assets/(.*)", "dest": "/assets/$1" },
-		{ "src": "/(.*)", "dest": "/api/ssr/index.mjs" }
-	]
+	"rewrites": [{ "source": "/(.*)", "destination": "/api/ssr/index.mjs" }]
 }
